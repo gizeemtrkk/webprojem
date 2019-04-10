@@ -16,37 +16,33 @@
   box-sizing: border-box;
 }
 
-body {
-  background-color: #f1f1f1;
-}
 
 #regForm {
   background-color: #ffffff;
   margin: 100px auto;
   font-family: Raleway;
   padding: 40px;
-  width: 70%;
+  width: 40%;
   min-width: 300px;
+  float: right;
 }
-
 h1 {
   text-align: center;  
 }
 
 input {
   padding: 10px;
-  width: 100%;
+  width: 70%;
   font-size: 17px;
   font-family: Raleway;
   border: 1px solid #aaaaaa;
 }
 
-/* Mark input boxes that gets an error on validation: */
+
 input.invalid {
   background-color: #ffdddd;
 }
 
-/* Hide all steps by default: */
 .tab {
   display: none;
 }
@@ -69,7 +65,6 @@ button:hover {
   background-color: #bbbbbb;
 }
 
-/* Make circles that indicate the steps of the form: */
 .step {
   height: 15px;
   width: 15px;
@@ -85,7 +80,7 @@ button:hover {
   opacity: 1;
 }
 
-/* Mark the steps that are finished and valid: */
+
 .step.finish {
   background-color: #4CAF50;
 }
@@ -111,29 +106,29 @@ button:hover {
 
 
 <form id="regForm" action="/action_page.php">
-  <h1>Register:</h1>
+  <h1>İLETİŞİM:</h1>
   <!-- One "tab" for each step in the form: -->
-  <div class="tab">Name:
+  <div class="tab">AD:
     <p><input placeholder="First name..." oninput="this.className = ''" name="fname"></p>
     <p><input placeholder="Last name..." oninput="this.className = ''" name="lname"></p>
   </div>
   <div class="tab">Contact Info:
-    <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
-    <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p>
+    <p><input placeholder="E-MAİL..." oninput="this.className = ''" name="email"></p>
+    <p><input placeholder="TELEFON..." oninput="this.className = ''" name="phone"></p>
   </div>
-  <div class="tab">Birthday:
+  <div class="tab">DOĞUM GÜNÜ TARİHİ:
     <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
     <p><input placeholder="mm" oninput="this.className = ''" name="nn"></p>
     <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
   </div>
   <div class="tab">Login Info:
-    <p><input placeholder="Username..." oninput="this.className = ''" name="uname"></p>
-    <p><input placeholder="Password..." oninput="this.className = ''" name="pword" type="password"></p>
+    <p><input placeholder="KULLANICI ADI..." oninput="this.className = ''" name="uname"></p>
+    <p><input placeholder="ŞİFRE..." oninput="this.className = ''" name="pword" type="password"></p>
   </div>
   <div style="overflow:auto;">
     <div style="float:right;">
-      <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-      <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+      <button type="button" id="prevBtn" onclick="nextPrev(-1)">GERİ</button>
+      <button type="button" id="nextBtn" onclick="nextPrev(1)">İLERİ</button>
     </div>
   </div>
   <!-- Circles which indicates the steps of the form: -->
