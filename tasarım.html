@@ -2,8 +2,108 @@
 
 <html lang="en">
 <head>
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script>
+$(window).scroll(function(){
+if ($(this).scrollTop() > 100)
+$(".yukaricik").fadeIn(500);
+else
+$(".yukaricik").fadeOut(500);
+});
+$(document).ready(function(){
+$(".yukaricik").click(function(){
+$("html, body").animate({ scrollTop: "0" }, 500);
+return false;
+});
+});
+</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="utf-8">
 	<title>Document</title>
+  <style >
+   body{
+      background-image:url("j.gif")
+ }
+    * {
+  box-sizing: border-box;
+}
+
+
+/* Center website */
+.main {
+  max-width: 1000px;
+  margin: auto;
+}
+
+h1 {
+  font-size: 50px;
+  word-break: break-all;
+}
+
+.row {
+  margin: 10px -16px;
+}
+
+/* Add padding BETWEEN each column */
+.row,
+.row > .column {
+  padding: 8px;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  display: none; /* Hide all elements by default */
+}
+
+/* Clear floats after rows */ 
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Content */
+.content {
+  background-color: white;
+  padding: 10px;
+}
+
+/* The "show" class is added to the filtered elements */
+.show {
+  display: block;
+}
+
+/* Style the buttons */
+.btn {
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #ddd;
+}
+
+.btn.active {
+  background-color: #666;
+  color: white;
+}
+.yukaricik {
+z-index:100;
+position:fixed;
+bottom:15px;
+right:15px;
+display:none;
+}
+.yukaricik-buton {
+width:60px;
+height:60px;
+}
+  </style>
 </head>
 <link rel="stylesheet" type="text/css" href="sttyle.css">
 <body bgcolor="#b3ffb3">
@@ -11,19 +111,348 @@
 
 
 <div class="topnav" >
-  <a class="active" href="#home"> ANASAYFA</a>
+  <a class="active" href="inndex.html"> ANASAYFA</a>
   <a href="haberler.html"> HABERLER </a>
   <a href="dünya.html"> DÜNYADA MODA  </a>
   <a href="tasarım.html"> TASARIM </a>
     <a href="hakkında.html"> HAKKINDA </a>
     <div id="logo">
-  <center> <img src="logo.jpg" size="150" height="73"  > </center> </div>
+  <center> <img src="res/logo.jpg" size="150" height="73"  > </center> </div>
   </div>
-  <div id="sag">
-    <font  color="white" > GİZEM TÜRK </font> </div>
+ 
+  <div class="main">
 
+
+
+
+<h2>TASARIMLAR</h2>
+
+<div id="myBtnContainer">
+  <button class="btn active" onclick="filterSelection('bütün')"> BÜTÜN TASARIMLAR</button>
+  <button class="btn" onclick="filterSelection('erdem')"> ERDEM MORALIOĞLU</button>
+  <button class="btn" onclick="filterSelection('hakan')">HAKAN AKKAYA </button>
+  <button class="btn" onclick="filterSelection('donna')"> DONNA KARAN</button>
+  <button class="btn" onclick="filterSelection('gia')"> GİA MATTİOLO </button>
+  <button class="btn" onclick="filterSelection('arzu')">ARZU KAPROL</button> <br> 
+  <button class="btn" onclick="filterSelection('cengiz')"> CENGİZ ABAZOĞLU</button>
+  <button class="btn" onclick="filterSelection('dilek')"> DİLEK HANİF</button>
+  <button class="btn" onclick="filterSelection('özgür')">ÖZGÜR MASUR</button>
+  <button class="btn" onclick="filterSelection('atıl')"> ATIL KUTOĞLU</button>
 </div>
-  
 
+<!-- Portfolio Gallery Grid -->
+<div class="row">
+  <div class="column atıl">
+    <div class="content">
+      <img src="res/a1.jpg" alt="atıl" style="width:100%">
+     <center> <h4>2018</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+  <div class="column atıl">
+    <div class="content">
+    <img src="res/a2.jpg" alt="atıl" style="width:100%">
+      <center><h4>2018</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+  <div class="column atıl">
+    <div class="content">
+    <img src="res/a3.jpg" alt="atıl" style="width:300px; height:500px;">
+      <center><h4>2018</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+  
+  <div class="column atıl">
+    <div class="content">
+      <img src="res/a4.jpg" alt="atıl" style="width:300px; height:500px;" >
+      <center><h4>2018</h4>
+      <p> İlkbahar/Yaz  </p></center>
+    </div>
+  </div>
+  <div class="column atıl">
+    <div class="content">
+    <img src="res/a5.jpg" alt="atıl" style="width:300px; height:500px;">
+      <center><h4>2018</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+  <div class="column atıl">
+    <div class="content">
+    <img src="res/a6.jpg" alt="atıl" style="width:300px; height:500px;">
+      <center><h4>2018</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+
+  <div class="column özgür">
+    <div class="content">
+      <img src="res/ö1.jpg" alt="özgür" style="width:300px; height:500px;">
+      <center><h4>2017</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+  <div class="column özgür">
+    <div class="content">
+    <img src="res/ö2.jpg" alt="özgür" style="width:300px; height:500px;">
+       <center><h4>2017</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+  <div class="column özgür">
+    <div class="content">
+    <img src="res/ö3.jpg" alt="özgür" style="width:300px; height:500px;">
+       <center><h4>2017</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+   <div class="column özgür">
+    <div class="content">
+    <img src="res/ö4.jpg" alt="özgür" style="width:300px; height:500px">
+       <center><h4>2017</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+   <div class="column özgür">
+    <div class="content">
+    <img src="res/ö5.jpg" alt="özgür" style="width:300px; height:500px;">
+       <center><h4>2017</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+   <div class="column özgür">
+    <div class="content">
+    <img src="res/ö6.jpg" alt="özgür" style="width:300px; height:500px;">
+      <center><h4>2017</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+   <div class="column cengiz">
+    <div class="content">
+    <img src="res/c1.jpg" alt="cengiz" style="width:300px; height:500px;">
+      <center><h4>2016</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+  <div class="column cengiz">
+    <div class="content">
+    <img src="res/c2.jpg" alt="cengiz" style="width:300px; height:500px;">
+      <center><h4>2016</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+  <div class="column cengiz">
+    <div class="content">
+    <img src="res/c3.jpg" alt="cengiz" style="width:300px; height:500px;">
+     <center><h4>2016</h4>
+      <p>İlkbahar/Yaz</p></center>
+  </div>
+</div>
+  <div class="column cengiz">
+    <div class="content">
+    <img src="res/c4.jpg" alt="cengiz" style="width:300px; height:500px;">
+      <center><h4>2016</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+  <div class="column cengiz">
+    <div class="content">
+    <img src="res/c5.jpg" alt="cengiz" style="width:300px; height:500px;">
+      <center><h4>2016</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+  <div class="column cengiz">
+    <div class="content">
+    <img src="res/c6.jpg" alt="cengiz" style="width:300px; height:500px;">
+      <center><h4>2016</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+  <div class="column erdem">
+    <div class="content">
+    <img src="res/e1.jpg" alt="erdem" style="width:300px; height:500px;">
+      <center><h4>2019</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+  <div class="column erdem">
+    <div class="content">
+    <img src="res/e2.jpg" alt="erdem" style="width:300px; height:500px;">
+      <center><h4>2019</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+  <div class="column erdem">
+    <div class="content">
+    <img src="res/e3.jpg" alt="erdem" style="width:300px; height:500px;">
+      <center><h4>2019</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+  <div class="column erdem">
+    <div class="content">
+    <img src="res/e4.jpg" alt="erdem" style="width:300px; height:500px;">
+      <center><h4>2019</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+  <div class="column erdem">
+    <div class="content">
+    <img src="res/e5.jpg" alt="erdem" style="width:300px; height:500px;">
+      <center><h4>2019</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+  <div class="column erdem">
+    <div class="content">
+    <img src="res/e6.jpg" alt="erdem" style="width:300px; height:500px;">
+      <center><h4>2019</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+  <div class="column hakan">
+    <div class="content">
+    <img src="res/h1.jpg" alt="hakan" style="width:300px; height:500px;">
+      <center><h4>2017</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+  <div class="column hakan">
+    <div class="content">
+    <img src="res/h2.jpg" alt="hakan" style="width:300px; height:500px;">
+      <center><h4>2017</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+  <div class="column hakan">
+    <div class="content">
+    <img src="res/h3.jpg" alt="hakan" style="width:300px; height:500px;">
+      <center><h4>2017</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+  <div class="column hakan">
+    <div class="content">
+    <img src="res/h4.jpg" alt="hakan" style="width:300px; height:500px;">
+      <center><h4>2017</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+  <div class="column hakan">
+    <div class="content">
+    <img src="res/h5.jpg" alt="hakan" style="width:300px; height:500px;">
+      <center><h4>2017</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+  <div class="column hakan">
+    <div class="content">
+    <img src="res/h6.jpg" alt="hakan" style="width:300px; height:500px;">
+      <center><h4>2017</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+  <div class="column gia">
+    <div class="content">
+    <img src="res/g1.jpg" alt="gia" style="width:300px; height:500px;">
+      <center><h4>2018</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+    <div class="column gia">
+    <div class="content">
+    <img src="res/g2.jpg" alt="gia" style="width:300px; height:500px;">
+      <center><h4>2018</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+    <div class="column gia">
+    <div class="content">
+    <img src="res/g3.jpg" alt="gia" style="width:300px; height:500px;">
+      <center><h4>2018</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+    <div class="column gia">
+    <div class="content">
+    <img src="res/g4.jpg" alt="gia" style="width:300px; height:500px;">
+      <center><h4>2018</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+    <div class="column gia">
+    <div class="content">
+    <img src="res/g5.jpg" alt="gia" style="width:300px; height:500px;">
+      <center><h4>2018</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+    <div class="column gia">
+    <div class="content">
+    <img src="res/g6.jpg" alt="gia" style="width:300px; height:500px;">
+      <center><h4>2018</h4>
+      <p>İlkbahar/Yaz</p></center>
+    </div>
+  </div>
+    <div class="column donna">
+    <div class="content">
+    <img src="res/d1.jpg" alt="donna" style="width:300px; height:500px;">
+      <center><h4>2017</h4>
+      <p>Sonbahar/Kış</p></center>
+    </div>
+  </div>
+   <div class="column donna">
+    <div class="content">
+    <img src="res/d2.jpg" alt="donna" style="width:300px; height:500px;">
+      <center><h4>2017</h4>
+      <p>Sonbahar/Kış</p></center>
+    </div>
+  </div>
+   <div class="column donna">
+    <div class="content">
+    <img src="res/d3.jpg" alt="donna" style="width:300px; height:500px;">
+      <center><h4>2017</h4>
+      <p>Sonbahar/Kış</p></center>
+    </div>
+  </div>
+   <div class="column donna">
+    <div class="content">
+    <img src="res/d4.jpg" alt="donna" style="width:300px; height:500px;">
+      <center><h4>2017</h4>
+      <p>Sonbahar/Kış</p></center>
+    </div>
+  </div>
+   <div class="column donna">
+    <div class="content">
+    <img src="res/d5.jpg" alt="donna" style="width:300px; height:500px;">
+      <center><h4>2017</h4>
+      <p>Sonbahar/Kış</p></center>
+    </div>
+  </div>
+   <div class="column donna">
+    <div class="content">
+    <img src="res/d6.jpg" alt="donna" style="width:300px; height:500px;">
+      <center><h4>2017</h4>
+      <p>Sonbahar/Kış</p></center>
+    </div>
+  </div>
+
+
+<!-- END GRID -->
+</div>
+
+<!-- END MAIN -->
+</div> 
+
+<div class="yukaricik">
+<a href="javascript:;">
+<img alt="Yukarı Çık" title="Yukarı Çık" class="yukaricik-buton" src="res/btn.png" />
+</a>
+</div>
+
+
+<script type="text/javascript" src="script.js"></script>
 </body>
 </html>

@@ -2,6 +2,89 @@
 
 <html lang="en">
 <head>
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script>
+$(window).scroll(function(){
+if ($(this).scrollTop() > 100)
+$(".yukaricik").fadeIn(500);
+else
+$(".yukaricik").fadeOut(500);
+});
+$(document).ready(function(){
+$(".yukaricik").click(function(){
+$("html, body").animate({ scrollTop: "0" }, 500);
+return false;
+});
+});
+</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1"><style >
+    html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+.yukaricik {
+z-index:100;
+position:fixed;
+bottom:15px;
+right:15px;
+display:none;
+}
+.yukaricik-buton {
+width:60px;
+height:60px;
+}
+  </style>
 	<meta charset="utf-8">
 	<title>Document</title>
 </head>
@@ -11,19 +94,132 @@
 
 
 <div class="topnav" >
-  <a class="active" href="#home"> ANASAYFA</a>
+  <a class="active" href="inndex.html"> ANASAYFA</a>
   <a href="haberler.html"> HABERLER </a>
   <a href="dünya.html"> DÜNYADA MODA </a>
   <a href="tasarım.html"> TASARIM </a>
     <a href="hakkında.html"> HAKKINDA </a>
    
    <div id="logo">
-  <center> <img src="logo.jpg" size="150" height="73"  > </center> </div>
+  <center> <img src="res/logo.jpg" size="150" height="73"  > </center> </div>
   </div>
-  <div id="sag">
-    <font  color="white" > GİZEM TÜRK </font> </div>
+  <br>
+<div style="background-color:white; width: 1016px; height: 1650px;"> 
+
+<h2><center>Ünlü Modacılar</center></h2>
+
+<br>
+
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <img src="res/erdem.jpg" alt="Jane" width="322" height="290";>
+      <div class="container">
+        <h2>ERDEM MORALIOĞLU</h2>
+        <p class="title">FASHION DESİGN</p>
+        <p>Erdem Moralıoğlu, İngiliz anne ve Türk babanın çocuğu olarak Montreal'de dünyaya gelmiştir.</p>
+        <p><button class="button" ><a href="tasarım.html">TASARIMLARI</a></button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="res/hakan.jpg" alt="Mike" width="322" height="290";>
+      <div class="container">
+        <h2>HAKAN AKKAYA</h2>
+        <p class="title">FASHION DESİGN</p>
+        <p>Hakan Akkaya, Türk moda tasarımcısı ve sunucu. Bir dönem İşte Benim Stilim programında jüri üyesi olarak görev aldı.</p>
+        <p><button class="button">TASARIMLARI</button></p>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <div class="card">
+      <img src="res/donna.jpg" alt="Mike" width="322" height="290";>
+      <div class="container">
+        <h2>DONNA KARAN</h2>
+        <p class="title">FAres/SHION DESİGN</p>
+        <p>Ünlüler Donna Karan’ın klas ve elegans çizgisinden vazgeçemiyor.Çalışmalarıyla markasını başarıya götürür.</p>
+        <p><button class="button">TASARIMLARI</button></p>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <div class="card">
+      <img src="res/gia.jpg" alt="Mike" width="322" height="290";>
+      <div class="container">
+        <h2>GİA MATTİOLO</h2>
+        <p class="title">FASHION DESİGN</p>
+        <p>İtalya'nın önde gelen modacılarından Gia Mattiolo, 2016'da gözünü İstanbul'a ve Türk kadınlarına çevirdi. </p>
+        <p><button class="button">TASARIMLARI</button></p>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <div class="card">
+      <img src="res/arzu.jpg" alt="Mike" width="322" height="290";>
+      <div class="container">
+        <h2>ARZU KAPROL</h2>
+        <p class="title">FASHION DESİGN</p>
+        <p>Arzu Kaprol Türk moda tasarımcısı.Mimar Sinan Üniversitesi Moda Konfeksiyon bölümünü bitirdi. </p>
+        <p><button class="button">TASARIMLARI</button></p>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <div class="card">
+      <img src="res/cengiz.jpg" alt="Mike" width="322" height="290";>
+      <div class="container">
+        <h2>CENGİZ ABAZOĞLU</h2>
+        <p class="title">FASHION DESİGN</p>
+        <p>Modaya olan tutkusuyla birçok başarılı işe imza atan Abazoğlu, önce yardımcı stilistlik yaptı.</p>
+        <p><button class="button">TASARIMLARI</button></p>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <div class="card">
+      <img src="res/dilek.jpg" alt="Mike" width="322" height="290";>
+      <div class="container">
+        <h2>DİLEK HANİF</h2>
+        <p class="title">FASHION DESİGN</p>
+        <p>Markasıyla modern kadının stilini belirleyen Dilek Hanif, Türkiye’de birçok ünlü ismi giydirdi. </p>
+        <p><button class="button">TASARIMLARI</button></p>
+      </div>
+    </div>
+  </div>
+  <div class="column">
+    <div class="card">
+      <img src="res/özgür.jpg" alt="Mike" width="322" height="290";>
+      <div class="container">
+        <h2>ÖZGÜR MASUR</h2>
+        <p class="title">FASHION DESİGN</p>
+        <p> Özgür Masur Marmara Üniversitesi Güzel Sanatlar Fakültesi Tekstil Sanatları Bölümü’nde eğitim görmüştür.</p>
+        <p><button class="button">TASARIMLARI</button></p>
+      </div>
+    </div>
+  </div>
+  <div class="column" >
+    <div class="card">
+      <img src="res/atil.jpg" alt="John" width="322" height="290";>
+      <div class="container">
+        <h2>ATIL KUTOĞLU</h2>    
+        <p class="title">FASHION DESİGN</p>
+        <p>Atıl Kutoğlu, modacı. Daha lisedeyken düzenlediği defilelerle dikkatleri üzerine çekti. </p>
+        <p><button class="button">TASARIMLARI</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 </div>
 
+<div class="yukaricik">
+<a href="javascript:;">
+<img alt="Yukarı Çık" title="Yukarı Çık" class="yukaricik-buton" src="res/btn.png" />
+</a>
+</div>
 </body>
 </html>

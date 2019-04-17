@@ -2,95 +2,94 @@
 
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Document</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script>
+$(window).scroll(function(){
+if ($(this).scrollTop() > 100)
+$(".yukaricik").fadeIn(500);
+else
+$(".yukaricik").fadeOut(500);
+});
+$(document).ready(function(){
+$(".yukaricik").click(function(){
+$("html, body").animate({ scrollTop: "0" }, 500);
+return false;
+});
+});
+</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <title>Document</title>
 </head>
-<link rel="stylesheet" type="text/css" href="sttyle.css">
-<body bgcolor="#b3ffb3">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {
-  box-sizing: border-box;
+<style >
+  video {
+  width: 900;
+  height: 1500;
+}
+element.style {
+}
+.p1 {
+    text-indent: 50px;
 }
 
-body {
-  margin: 0;
-  font-family: Arial;
-  font-size: 17px;
+.p2 {
+    text-indent: 50px;
 }
-
-#myVideo {
-  
-  right: 0;
-  bottom: 0;
-  width: 1000px;
-  height: 720px;
+user agent stylesheet
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
 }
-
-.content {
-  position: fixed;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  color: #f1f1f1;
-  width: 70%;
-  padding: 20px;
+.yukaricik {
+z-index:100;
+position:fixed;
+bottom:15px;
+right:15px;
+display:none;
 }
-
-#myBtn {
-  width: 100px;
-  font-size: 18px;
-  padding: 10px;
-  border: none;
-  background: #000;
-  color: #fff;
-  cursor: pointer;
-}
-
-#myBtn:hover {
-  background: #ddd;
-  color: black;
+.yukaricik-buton {
+width:60px;
+height:60px;
 }
 </style>
+<link rel="stylesheet" type="text/css" href="sttyle.css">
+<body bgcolor="#b3ffb3">
+  
 
 
 <div class="topnav" >
-  <a class="active" href="inndex.html"> ANASAYFA </a>
+  <a class="active" href="inndex.html"> ANASAYFA</a>
   <a href="haberler.html"> HABERLER </a>
-  <a href="dünya.html"> DÜNYADA MODA </a>
+  <a href="dünya.html"> DÜNYADA MODA  </a>
   <a href="tasarım.html"> TASARIM </a>
     <a href="hakkında.html"> HAKKINDA </a>
-   
-   <div id="logo">
-  <center> <img src="logo.jpg" size="150" height="73"  > </center> </div>
-  </div><br>
+    <div id="logo">
+  <center> <img src="res/logo.jpg" size="150" height="73"  > </center> </div>
+  </div>
+  <br>
+  <div  style="background-color:white; width: 500px; height:400px; float: right;" > 
+<center><h3>ERDEM MORALIOĞLU</h3></center>
+<p class="p1" >Dünya moda endüstrisinde ‘çiçeklerin efendisi’ olarak bilinen Türk modacımız Erdem Moralıoğlu, İngiltere’de ‘Yılın Adamı’ seçildi!
+Yarattığı ‘Erdem’ markasıyla önce İngiltere’yi, sonra da dünya modasını sarsan ‘yeni nesil’ modacımız Erdem Moralıoğlu, başarıdan başarıya koşmaya devam ediyor! 2015’in aralık ayında İngiliz Harper’s Bazaar dergisi tarafından Londra’da düzenlenen ‘2015 Yılın Ödülleri’ töreninde ‘Yılın Adamı’ seçilen Erdem Moralıoğlu, 2014 yılında da British Fashion Council’in gerçekleştirdiği İngiliz Moda Konseyi Ödülleri gecesinde, ‘Yılın Tasarımcısı’ ödülüne layık görülmüştü…
+<center><h3>Her Yaştan ve Kültürden Kadına Hitap Eden Tasarımlar</h3></center></p>
+<p class="p2">Erdem Moralıoğlu, tasarımlarının her yaş ve kültürden kadına hitap ettiğini, onlara ulaşabildiğini şu sözlerle anlatıyor. “Giysilerimi 18 yaşında Paris te yaşayan bir Fransız genç kız da, 24 yaşında Singapurlu bir işkadını da, İstanbul da yaşayan 57 yaşında zarif bir Türk annesi de giyebilir. Giysilerimde evrenselliği anlatıyorum, başarımın sırrı da burada yatıyor zaten” diyor.</p>
 
- <video autoplay muted loop id="myVideo">
-  <source src="erdem.mp4" type="video/mp4">
-  Your browser does not support HTML5 video.
-</video>
 
-<div class="content">
-  <h1>Heading</h1>
-  <p>Lorem ipsum dolor sit amet, an his etiam torquatos. Tollit soleat phaedrum te duo, eum cu recteque expetendis neglegentur. Cu mentitum maiestatis persequeris pro, pri ponderum tractatos ei. Id qui nemore latine molestiae, ad mutat oblique delicatissimi pro.</p>
-  <button id="myBtn" onclick="myFunction()">Pause</button>
 </div>
+<br><center>
+  <video width="700" controls>
+  <source src="erdem.mp4" type="video/mp4">
+  <source src="mov_bbb.ogg" type="video/ogg">
 
-<script>
-var video = document.getElementById("myVideo");
-var btn = document.getElementById("myBtn");
-
-function myFunction() {
-  if (video.paused) {
-    video.play();
-    btn.innerHTML = "Pause";
-  } else {
-    video.pause();
-    btn.innerHTML = "Play";
-  }
-}
-</script>
-  
-
-
+</video>
+</center>
+<div class="yukaricik">
+<a href="javascript:;">
+<img alt="Yukarı Çık" title="Yukarı Çık" class="yukaricik-buton" src="res/btn.png" />
+</a>
+</div>
 </body>
 </html>
