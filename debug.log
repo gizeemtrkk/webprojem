@@ -1,4 +1,0 @@
-[0418/000120.981:ERROR:file_io_win.cc(170)] CreateFile C:\Users\PC\AppData\Local\Google\Chrome\User Data\Crashpad\reports\c948089e-3575-45e5-bb6c-3787d0d4be47.dmp: Dosya veya dizin bozuk ve okunamaz durumda. (0x570)
-[0418/000120.981:ERROR:crash_report_exception_handler.cc(97)] PrepareNewCrashReport failed
-[0418/001926.609:ERROR:file_io_win.cc(170)] CreateFile C:\Users\PC\AppData\Local\Google\Chrome\User Data\Crashpad\reports\86f35482-3b67-420e-9c94-e03cd695b139.dmp: Dosya veya dizin bozuk ve okunamaz durumda. (0x570)
-[0418/001926.609:ERROR:crash_report_exception_handler.cc(97)] PrepareNewCrashReport failed
