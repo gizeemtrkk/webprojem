@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>⚜FASHION SECRET⚜</title>
 </head>
 <style >
@@ -28,15 +29,25 @@ div {
     opacity: 0;
     cursor: pointer;
 }
-.p4{
-background: blue;
-height: 30px;
-width: 30px;
+* {box-sizing: border-box;}
 
+.img-magnifier-container {
+  position:relative;
+}
 
+.img-magnifier-glass {
+  position: absolute;
+  border: 3px solid #000;
+  border-radius: 50%;
+  cursor: none;
+  /*Set the size of the magnifier glass:*/
+  width: 100px;
+  height: 100px;
 }
 
 </style>
+
+
 <link rel="stylesheet" type="text/css" href="sttyle.css">
 <body bgcolor="#b3ffb3">
 	
@@ -53,6 +64,26 @@ width: 30px;
   <center> <img src="res/logo.jpg" size="150" height="73"  > </center> </div>
   </div>
   <br>
+
+
+<button onclick="typeWriter()">Beni Tıkla...</button>
+
+<p id="demo"></p>
+
+<script>
+var i = 0;
+var txt = '⚜ FASHION SECRET A HOŞGELDİNİZ ⚜';
+var speed = 50;
+
+function typeWriter() {
+  if (i < txt.length) {
+    document.getElementById("demo").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+</script>
+<br>
 <div style="background-color:white; width: 1016px; height: 400px;"> 
 
 <div class="row">
@@ -61,12 +92,12 @@ width: 30px;
     </div>
 </div>
   <br>
-
-<div style="background-color:white; width: 1016px; height: 900px;"> 
+<center>
+<div style="background-color:white; width: 1016px; height: 900px;" > 
 
   <div class="row">
     <div class="column">
-      <img class="demo cursor" src="res/moda.jpg" style="width:250px;height: 300px; " >       
+      <img class="demo cursor" src="res/moda.jpg" style="width:250px;height: 300px; position: relative;"  >       
       <p><font face=" Times New Roman" size="4" >
 <i>Moda, moda, moda...</i> Nedir bu <i>moda</i> dediğimiz? Erkeler de, bayanlar da -ki günümüzde bayanların vazgeçilmezlerindendir- <i>moda</i> ile ilgilenir. Her ne kadar bayanlara göre erkeler daha az ilgileniyor gibi görünse de aslında erkeklerde <i>moda</i>ile ilgilidir. Ama günümüzde <i>moda</i> deyince aklımıza ilk gelen bayan olur. Çünkü etrafımızdaki tüm giysi mağazaları nerdeyse sadece bayanlara çalışıyor gibidir. Bugün hangi çarşıya giderseniz gidin, hangi mağazaya girerseniz girin kadınlar için üretilen ürünlerin erkeklerinkinden daha fazla olduğunu görebilirsiniz. 
 
@@ -81,19 +112,21 @@ Tahmin ediyoruz ki birçok insan <i>moda</i> kelimesini kullanırken içten içe
 
 </font></p>
     </div>
+</div></div></div></center>
+
+<div  style="background-color:red; width: 10px; height:100px; float: right;margin-top: 100px;"> 
+</div>
+<script language="javascript" src="http://ir.sitekodlari.com/yukaricik15.js">
+ 
+</script>
+<div class="img-magnifier-container">
+  <img id="myimage" src="res/ygt.jpg" width="300" height="400" style="float: right; margin-top: -420px;">
 </div>
 
-<div id="res" style="background-color:red; width: 10px; height:100px; position: 1500px; left: 100px;"> 
-</div>
-<script language="javascript" src="http://ir.sitekodlari.com/yukaricik15.js"></script>
-
-<!-- Sayaclar.com Code Start  
-<div align="right"><script language="Javascript" src="http://sa.sayaclar.com/c/s4.php?a=6nes8jr&s=2a6"></script></div>
- Sayaclar.com Code End -->
 
 
 <canvas width="377" height="657" style="width: 377px; height: 657px;">
-  <footer id="p4">shshf</footer>
+  
 </canvas>
 </body>
 </html>

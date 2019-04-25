@@ -2,6 +2,7 @@
 
 <html lang="en">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script>
 $(window).scroll(function(){
@@ -16,6 +17,140 @@ $("html, body").animate({ scrollTop: "0" }, 500);
 return false;
 });
 });
+
+
+function initComparisons() {
+  var x, i;
+  /*find all elements with an "overlay" class:*/
+  x = document.getElementsByClassName("img-comp-overlay");
+  for (i = 0; i < x.length; i++) {
+    /*once for each "overlay" element:
+    pass the "overlay" element as a parameter when executing the compareImages function:*/
+    compareImages(x[i]);
+  }
+  function compareImages(img) {
+    var slider, img, clicked = 0, w, h;
+    /*get the width and height of the img element*/
+    w = img.offsetWidth;
+    h = img.offsetHeight;
+    /*set the width of the img element to 50%:*/
+    img.style.width = (w / 2) + "px";
+    /*create slider:*/
+    slider = document.createElement("DIV");
+    slider.setAttribute("class", "img-comp-slider");
+    /*insert slider*/
+    img.parentElement.insertBefore(slider, img);
+    /*position the slider in the middle:*/
+    slider.style.top = (h / 2) - (slider.offsetHeight / 2) + "px";
+    slider.style.left = (w / 2) - (slider.offsetWidth / 2) + "px";
+    /*execute a function when the mouse button is pressed:*/
+    slider.addEventListener("mousedown", slideReady);
+    /*and another function when the mouse button is released:*/
+    window.addEventListener("mouseup", slideFinish);
+    /*or touched (for touch screens:*/
+    slider.addEventListener("touchstart", slideReady);
+    /*and released (for touch screens:*/
+    window.addEventListener("touchstop", slideFinish);
+    function slideReady(e) {
+      /*prevent any other actions that may occur when moving over the image:*/
+      e.preventDefault();
+      /*the slider is now clicked and ready to move:*/
+      clicked = 1;
+      /*execute a function when the slider is moved:*/
+      window.addEventListener("mousemove", slideMove);
+      window.addEventListener("touchmove", slideMove);
+    }
+    function slideFinish() {
+      /*the slider is no longer clicked:*/
+      clicked = 0;
+    }
+    function slideMove(e) {
+      var pos;
+      /*if the slider is no longer clicked, exit this function:*/
+      if (clicked == 0) return false;
+      /*get the cursor's x position:*/
+      pos = getCursorPos(e)
+      /*prevent the slider from being positioned outside the image:*/
+      if (pos < 0) pos = 0;
+      if (pos > w) pos = w;
+      /*execute a function that will resize the overlay image according to the cursor:*/
+      slide(pos);
+    }
+    function getCursorPos(e) {
+      var a, x = 0;
+      e = e || window.event;
+      /*get the x positions of the image:*/
+      a = img.getBoundingClientRect();
+      /*calculate the cursor's x coordinate, relative to the image:*/
+      x = e.pageX - a.left;
+      /*consider any page scrolling:*/
+      x = x - window.pageXOffset;
+      return x;
+    }
+    function slide(x) {
+      /*resize the image:*/
+      img.style.width = x + "px";
+      /*position the slider:*/
+      slider.style.left = img.offsetWidth - (slider.offsetWidth / 2) + "px";
+    }
+  }
+}
+
+
+function magnify(imgID, zoom) {
+  var img, glass, w, h, bw;
+  img = document.getElementById(imgID);
+  /*create magnifier glass:*/
+  glass = document.createElement("DIV");
+  glass.setAttribute("class", "img-magnifier-glass");
+  /*insert magnifier glass:*/
+  img.parentElement.insertBefore(glass, img);
+  /*set background properties for the magnifier glass:*/
+  glass.style.backgroundImage = "url('" + img.src + "')";
+  glass.style.backgroundRepeat = "no-repeat";
+  glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
+  bw = 3;
+  w = glass.offsetWidth / 2;
+  h = glass.offsetHeight / 2;
+  /*execute a function when someone moves the magnifier glass over the image:*/
+  glass.addEventListener("mousemove", moveMagnifier);
+  img.addEventListener("mousemove", moveMagnifier);
+  /*and also for touch screens:*/
+  glass.addEventListener("touchmove", moveMagnifier);
+  img.addEventListener("touchmove", moveMagnifier);
+  function moveMagnifier(e) {
+    var pos, x, y;
+    /*prevent any other actions that may occur when moving over the image*/
+    e.preventDefault();
+    /*get the cursor's x and y positions:*/
+    pos = getCursorPos(e);
+    x = pos.x;
+    y = pos.y;
+    /*prevent the magnifier glass from being positioned outside the image:*/
+    if (x > img.width - (w / zoom)) {x = img.width - (w / zoom);}
+    if (x < w / zoom) {x = w / zoom;}
+    if (y > img.height - (h / zoom)) {y = img.height - (h / zoom);}
+    if (y < h / zoom) {y = h / zoom;}
+    /*set the position of the magnifier glass:*/
+    glass.style.left = (x - w) + "px";
+    glass.style.top = (y - h) + "px";
+    /*display what the magnifier glass "sees":*/
+    glass.style.backgroundPosition = "-" + ((x * zoom) - w + bw) + "px -" + ((y * zoom) - h + bw) + "px";
+  }
+  function getCursorPos(e) {
+    var a, x = 0, y = 0;
+    e = e || window.event;
+    /*get the x and y positions of the image:*/
+    a = img.getBoundingClientRect();
+    /*calculate the cursor's x and y coordinates, relative to the image:*/
+    x = e.pageX - a.left;
+    y = e.pageY - a.top;
+    /*consider any page scrolling:*/
+    x = x - window.pageXOffset;
+    y = y - window.pageYOffset;
+    return {x : x, y : y};
+  }
+}
 </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
@@ -33,6 +168,13 @@ element.style {
 }
 
 .p2 {
+    text-indent: 50px;
+}
+.p3 {
+    text-indent: 50px;
+}
+
+.p4 {
     text-indent: 50px;
 }
 user agent stylesheet
@@ -53,6 +195,86 @@ display:none;
 .yukaricik-buton {
 width:60px;
 height:60px;
+}
+* {box-sizing: border-box;}
+
+.img-comp-container {
+  position: relative;
+  height: 200px; /*should be the same height as the images*/
+}
+
+.img-comp-img {
+  position: absolute;
+  width: auto;
+  height: auto;
+  overflow:hidden;
+}
+
+.img-comp-img img {
+  display:block;
+  vertical-align:middle;
+}
+
+.img-comp-slider {
+  position: absolute;
+  z-index:9;
+  cursor: ew-resize;
+  /*set the appearance of the slider:*/
+  width: 40px;
+  height: 40px;
+  background-color: #2196F3;
+  opacity: 0.7;
+  border-radius: 50%;
+}
+
+
+
+
+
+
+.img-comp-container2 {
+  position: relative;
+  height: 200px;
+  margin-top: 120px; /*should be the same height as the images*/
+}
+
+.img-comp-img {
+  position: absolute;
+  width: auto;
+  height: auto;
+  overflow:hidden;
+}
+
+.img-comp-img img {
+  display:block;
+  vertical-align:middle;
+}
+
+.img-comp-slider {
+  position: absolute;
+  z-index:9;
+  cursor: ew-resize;
+  /*set the appearance of the slider:*/
+  width: 40px;
+  height: 40px;
+  background-color: #2196F3;
+  opacity: 0.7;
+  border-radius: 50%;
+}
+* {box-sizing: border-box;}
+
+.img-magnifier-container {
+  position:relative;
+}
+
+.img-magnifier-glass {
+  position: absolute;
+  border: 3px solid #000;
+  border-radius: 50%;
+  cursor: none;
+  /*Set the size of the magnifier glass:*/
+  width: 100px;
+  height: 100px;
 }
 </style>
 <link rel="stylesheet" type="text/css" href="sttyle.css">
@@ -86,6 +308,60 @@ Yarattığı ‘Erdem’ markasıyla önce İngiltere’yi, sonra da dünya moda
 
 </video>
 </center>
+
+<br><br><br>
+
+
+<center><div class="img-comp-container">
+  <div class="img-comp-img">
+    <img src="res/giz2.jpg" width="300" height="300">
+  </div>
+  <div class="img-comp-img img-comp-overlay">
+    <img src="res/giz3.jpg" width="300" height="300">
+  </div>
+
+</div>
+<div class="img-comp-container2">
+  <div class="img-comp-img">
+    <img src="res/gi1.jpg" width="300" height="300">
+  </div>
+  <div class="img-comp-img img-comp-overlay">
+    <img src="res/gi2.jpg" width="300" height="300">
+  </div>
+  
+</div></center>
+
+<script>
+/*Execute a function that will execute an image compare function for each element with the img-comp-overlay class:*/
+initComparisons();
+</script>
+
+<div  style="background-color:white; width: 1000px; height:620px; float: right; margin-top: -520px;" > 
+<center><h3>HAKAN AKKAYA</h3></center>
+<p class="p3" >Hakan Akkaya, dün Hasköy Yün İplik Fabrikası'nda ilginç bir defileye imza attı. Tasarımlar kadar konsept de dikkat çekiciydi. Çağla Şikel ise geceye damgasını vurdu.Ünlü modacı Hakan Akkaya, dün akşam Hasköy Yün İplik Fabrikası’nda Marie Antoinette adını verdiği defilesini gerçekleştirdi. Dev prodüksiyonlu defilesinde 700 parçalık, 80 kombinden oluşan kadın ve erkek kreasyonunu tanıtan Akkaya’ya 60 model eşlik etti.Çağla Şikel’in Marie Antoinette olduğu gecede aynı zamanda Özge Ulusoy, Ebru Ürün, Sema Şimşek ve Oyuncu Serenay Aktaş da yer aldı. Akkaya aynı zamanda iki ayrı podyumda aynı anda iki koleksiyon tanıtmasıyla da bir ilke imza attı.Modacı Hakan Akkaya, ikinci kez katıldığı New York Moda Haftası'nda (NYFW) yeni koleksiyonunu tanıttı. Akkaya'nın modern tasarımlarının tanıtımını Selda Bağcan şarkısı eşliğinde gerçekleştirdiği podyumda Çağla Şıkel ve Özge Ulusoy rüzgarı esti.</p>
+<p class="p4">Street ve Glamour olmak üzere iki koleksiyon hazırlayan Hakan Akkaya ilk kez sınırlarının dışına çıkmış gibiydi. Tiyatral bir konsept hazırlayan Akkaya, özellikle ilk bölümde herkesi tedirgin etmeyi başardı. Tabii ki tasarımlarıyla… Tamamen siyah kıyafetlerden oluşan ilk bölüm dışında, yine tamamen kırmızıdan oluşan ikinci bölümde daha önce şahit olmadığınız bir Hakan Akkaya vardı.Defilede Bennu Gerede’nin Mercedes Benz Fashion Week Istanbul’da ilk kez podyuma çıkan 3 oğlu Daren Gerede Erkaya, Dilan Gerede Erkaya, Miro Gerede Erkaya da yer aldı. Defilenin en ilgi çeken isimlerinden biri de Muhammed Eymen Şahin oldu. Şahin, protez bacağıyla podyuma çıktı ve seyircilerden büyük alkış aldı.Türk mankenler Çağla Şıkel ve Özge Ulusoy'un yanı sıra Paris Hilton'un kardeşi Barron Hilton da podyuma çıktı.Akkaya'nın yeni koleksiyonunun sunumunda, erkek mankenler arasındaki açılış ve kapanışı Barron Hilton, kadın modasında da Çağla Şıkel yaptı.Defilesinde tamamen Türk kumaşını kullanan Akkaya, modern tasarımlarının tanıtımını Türk Halk Müziği sanatçısı Selda Bağcan'ın "Katip Arzuhalım" şarkısının müziği eşliğinde gerçekleştirdi.Akkaya, yeni koleksiyonuyla ilgili yaptığı açıklamada, "Bahar 2018 için siyah ve beyaz geometrik baskılar ile yumuşak pastel tonları birbirine karıştırdım ve keskin kontrastlar oluşturdum." dedi.Barron Hilton ise defilede yer almasına ilişkin, "Hakan Akkaya'ya bana defilenin açılışı ve kapanışını yaptırdığı için teşekkürler. Bu inanılmaz koleksiyonun bir parçası olmaktan gurur duydum" ifadelerini kullandı.Hakan Akkaya'nın koleksiyonunu New York'tan sonra ilk kez İzmir'de sergiledi
+İzmir'de moda rüzgarı esti
+İZMİR - Ünlü modacı Hakan Akkaya, New York'tan sonra ilk kez hazır giyim abiye koleksiyonunu İzmir'de sergiledi. 
+New York Fashion Week'teki defilesiyle Türkiye'yi başarıyla temsil eden Hakan Akkaya, New York'un ardından ilk defilesini İzmir'de yaptı. Ünlü modacı Akkaya, Pret a Porter Abiye koleksiyonunu Türkiye'de ilk kez İzmirlilere sundu. İzmir'de bir alışveriş merkezinde düzenlenen defileyi Vatan Şaşmaz sundu. Defilede, Çağla Şıkel, Chloe Loughnan ve Rönesans Ajans'ın mankenleri 41 kombin tasarım ile podyumda boy gösterdi. Geceye katılan modaseverler büyük bir ilgiyle Hakan Akkaya'nın koleksiyonunu inceledi. Defile sonrası gazetecilerle bir araya gelen Çağla Şıkel,"Böyle bir ortamda tekrar Hakan Akkaya koleksiyonuyla yürüdüğüm için mutluyum, gerçekten bazı defileler çok streslidir ama bu defilede yürümek çok keyifliydi." dedi. İlk defa hazır giyim ve abiye koleksiyonunu İzmir'de sergilediğini belirten Akkaya, "Anadoludan çok fazla mağazalar ve insanlar arıyor benim tasarımlarımı istiyorlar. Bende artık hazır giyim tasarımlarımı tüm Türkiye'ye satışa çıkardım, hemen hemen bütün bölgelerde varız." şeklinde konuştu. Öte yandan İlk kez Hakan Akkaya'nın defilesinde yer aldığını söyleyen Chloe Loughnan, Hakan Akkaya'yı takip ettiğini ve tasarımlarını çok beğendiğini ifade etti.
+</p>
+
+
+</div>
+<br><br><br>
+
+<div class="img-magnifier-container">
+  <img id="myimage" src="res/gzm1.jpg" width="300" height="400" style="margin-bottom: : 2000px; margin-top:150px; ">
+</div>
+
+
+
+<script>
+/* Initiate Magnify Function
+with the id of the image, and the strength of the magnifier glass:*/
+magnify("myimage", 3);
+</script>
+
+
 <div class="yukaricik">
 <a href="javascript:;">
 <img alt="Yukarı Çık" title="Yukarı Çık" class="yukaricik-buton" src="res/btn.png" />
